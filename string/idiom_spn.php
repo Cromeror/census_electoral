@@ -1,8 +1,9 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+$title_login = "Iniciar sesión";
+$username = "Numero de Cédula";
+$password = "Contraseña";
+$btn_login = "Inicio de sesión";
+$clue_username = "Digite su numero de cédula";
+$clue_password = "Digite su contraseña";
+?>
