@@ -16,7 +16,7 @@ include_once getcwd() . '\string\idiom_spn.php';
         <script src="js/bootstrap.min.js"></script>
         <nav class="navbar navbar-default navbar-fixed-top">
         </nav>
-        <div class="container" style="padding-top: 10%">
+        <div class="container" style="padding-top: 10%;">
             <div class="row">
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
@@ -27,22 +27,21 @@ include_once getcwd() . '\string\idiom_spn.php';
                             </div>
                             <form role="form" >
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1"><?php echo $username; ?></label>
+                                    <label for="loginUsername"><?php echo $username; ?></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="<?php echo $clue_username; ?>">
+                                        <input type="email" class="form-control" id="loginUsername" placeholder="<?php echo $clue_username; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1"><?php echo $password; ?></label>
+                                    <label for="loginPassword"><?php echo $password; ?></label>
                                     <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="<?php echo $clue_password; ?>">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                                        <input type="password" class="form-control" id="loginPassword" placeholder="<?php echo $clue_password; ?>">
                                     </div>
                                 </div>
                                 <hr/>
                                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> <?php echo $btn_login; ?></button>
-                                <p><br/></p>
                             </form>
                         </div>
                     </div>
