@@ -15,8 +15,65 @@ class Idiom {
     private $label_voter = "Votantes";
     private $label_query_place = "Consultar Puesto de votación";
     private $label_sign_out = "Salir";
+    //***modal voter***
+    private $modal_add_voter = "Agregar Votante";
+    private $modal_label_cc = "Cédula de ciudadania";
+    private $modal_label_name = "Nombre";
+    private $modal_label_lastname = "Apellidos";
+    private $modal_label_departament = "Departamento";
+    private $modal_label_town = "Municipio";
+    private $modal_label_place = "Lugar de votación";
+    private $modal_label_dir_place = "Dirección del lugar";
+    private $modal_label_table = "Mesa de votación";
+    private $modal_label_tel = "Teléfono";
+    //********************
+
     function __construct() {
         
+    }
+
+    function getModal_label_cc() {
+        return $this->modal_label_cc;
+    }
+
+    function getModal_label_name() {
+        return $this->modal_label_name;
+    }
+
+    function getModal_label_lastname() {
+        return $this->modal_label_lastname;
+    }
+
+    function getModal_label_departament() {
+        return $this->modal_label_departament;
+    }
+
+    function getModal_label_town() {
+        return $this->modal_label_town;
+    }
+
+    function getModal_label_place() {
+        return $this->modal_label_place;
+    }
+
+    function getModal_label_dir_place() {
+        return $this->modal_label_dir_place;
+    }
+
+    function getModal_label_table() {
+        return $this->modal_label_table;
+    }
+
+    function getModal_label_tel() {
+        return $this->modal_label_tel;
+    }
+
+    function getModal_label_cel() {
+        return $this->modal_label_cel;
+    }
+
+    function getModal_add_voter() {
+        return $this->modal_add_voter;
     }
 
     function getTitle_login() {

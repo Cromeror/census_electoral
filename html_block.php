@@ -32,7 +32,7 @@ class ElementHTML {
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="' . $this->host . 'leaders.php">' . $this->idiom->getLabel_leaders() . '</a></li>
-                        <li><a href="' . $this->host . '">' . $this->idiom->getLabel_voter() . '</a></li>
+                        <li><a href="' . $this->host . 'voters.php">' . $this->idiom->getLabel_voter() . '</a></li>
                         <li><a href="' . $this->host . '">' . $this->idiom->getLabel_query_place() . '</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $this->idiom->getLabel_stadistics() . '<b class="caret"></b></a>
@@ -51,6 +51,24 @@ class ElementHTML {
 
     function load_table_depart_town() {
         //
+    }
+
+    function load_modal_add_voter() {
+        echo '<div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">' . $this->idiom->getModal_add_voter() . '</h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" >Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->';
     }
 
     function getHost() {

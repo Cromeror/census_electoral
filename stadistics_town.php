@@ -43,8 +43,8 @@ $elements = new ElementHTML();
                         <table class="table table-responsive table-hover" >
                             <thead>
                                 <tr>
-                                    <th>Departamento</th>
                                     <th>Municipio</th>
+                                    <th>Puesto de votación</th>
                                     <th>Numero de votantes</th>
                                 </tr>
                             </thead>
@@ -61,7 +61,17 @@ $elements = new ElementHTML();
                         </table>
                     </div>
                 </div>
-                <div class="col-md-6"><div id="conta" style="width:100%; height:400px; padding-top: 10%"></div></div>
+                <div class="col-md-6">
+                    <div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Check me out
+                            </label>
+                        </div>
+                        
+                    </div>
+                    <div id="conta" style="width:100%; height:400px; padding-top: 10%"></div>
+                </div>
             </div>
         </div>
     </div>
