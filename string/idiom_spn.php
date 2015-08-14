@@ -10,7 +10,7 @@ class Idiom {
     private $clue_password = "Digite su contraseña";
     private $label_leaders = "Lideres";
     private $label_stadistics = "Estadisticas";
-    private $label_town = "Municipios";
+    private $label_town = "Departamentos y Municipios";
     private $label_place = "Puestos de Votación";
     private $label_voter = "Votantes";
     private $label_query_place = "Consultar Puesto de votación";

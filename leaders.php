@@ -16,8 +16,24 @@ $elements = new ElementHTML();
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <div class="navbar navbar-default navbar-fixed-top" style="padding-left: 20px; padding-right: 20px; margin-bottom: 10px">
+            <?php $elements->load_navbar(); ?>
+            <div class="navbar navbar-default border-none">
+                <div class="container">   
+                    <form class="navbar-form navbar-left" role="search" style="margin-top: 10px">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Cédula de ciudadanía">
+                        </div>
 
-        <?php $elements->load_navbar(); ?>
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                    <div class="btn-group navbar-right" style="margin-top: 10px">
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" ></span></button>
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--**************************************************-->
         <div class="container" style="padding-top: 10%">
             <table class="table table-condensed table-hover table-responsive">

@@ -5,14 +5,15 @@ include_once getcwd() . '\string\idiom_spn.php';
 class ElementHTML {
 
     private $idiom;
+    private $host;
 
     function __construct() {
         $this->idiom = new Idiom();
+        $this->host  = "http://localhost/census_electoral/";
     }
 
     function load_navbar() {
-        echo '<div class="navbar navbar-default navbar-fixed-top" style="padding-left: 20px; padding-right: 20px; margin-bottom: 10px">
-            <nav class="navbar navbar-default border-none" role="navigation">
+        echo '<nav class="navbar navbar-default border-none" role="navigation">
                 <!-- El logotipo y el icono que despliega el menú se agrupan
                      para mostrarlos mejor en los dispositivos móviles -->
                 <div class="navbar-header">
@@ -30,14 +31,14 @@ class ElementHTML {
                      otro elemento que se pueda ocultar al minimizar la barra -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">' . $this->idiom->getLabel_leaders() . '</a></li>
-                        <li><a href="#">' . $this->idiom->getLabel_voter() . '</a></li>
-                        <li><a href="#">' . $this->idiom->getLabel_query_place() . '</a></li>
+                        <li><a href="'.$this->host.'leaders.php">' . $this->idiom->getLabel_leaders() . '</a></li>
+                        <li><a href="'.$this->host.'">' . $this->idiom->getLabel_voter() . '</a></li>
+                        <li><a href="'.$this->host.'">' . $this->idiom->getLabel_query_place() . '</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $this->idiom->getLabel_stadistics() . '<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">' . $this->idiom->getLabel_town() . '</a></li>
-                                <li><a href="#">' . $this->idiom->getLabel_place() . '</a></li>
+                                <li><a href="'.$this->host.'stadistics_town.php">' . $this->idiom->getLabel_place() . '</a></li>
+                                <li><a href="'.$this->host.'stadistics_departament.php">' . $this->idiom->getLabel_town() . '</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -45,25 +46,11 @@ class ElementHTML {
                     <li><a href="#">' . $this->idiom->getLabel_sign_out() . '</a></li>
                     </ul>
                 </div>
-            </nav>          
-            <div class="navbar navbar-default border-none">
-                <div class="container">   
-                    <form class="navbar-form navbar-left" role="search" style="margin-top: 10px">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Cédula de ciudadanía">
-                        </div>
-
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-                    </form>
-                    <div class="btn-group navbar-right" style="margin-top: 10px">
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" ></span></button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
-                    </div>
-                </div>
-            </div>
-        </div>';
+            </nav>  ';
     }
-
+    function load_table_depart_town(){
+        //
+    }
 }
 
 ?>
