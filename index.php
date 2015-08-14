@@ -29,12 +29,12 @@ $idiom = new Idiom();
                             <div class="page-header">
                                 <h3><?php echo $idiom->getTitle_login(); ?></h3>
                             </div>
-                            <form role="form" >
+                            <form role="form" id="log_in" action="leaders.php" method="post">
                                 <div class="form-group">
                                     <label for="loginUsername"><?php echo $idiom->getUsername(); ?></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input type="email" class="form-control" id="loginUsername" placeholder="<?php echo $idiom->getClue_username(); ?>">
+                                        <input type="text" class="form-control" id="loginUsername" placeholder="<?php echo $idiom->getClue_username(); ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">

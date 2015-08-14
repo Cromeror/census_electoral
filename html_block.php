@@ -9,7 +9,7 @@ class ElementHTML {
 
     function __construct() {
         $this->idiom = new Idiom();
-        $this->host  = "http://localhost/census_electoral/";
+        $this->host = "http://localhost/census_electoral/";
     }
 
     function load_navbar() {
@@ -31,14 +31,14 @@ class ElementHTML {
                      otro elemento que se pueda ocultar al minimizar la barra -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="'.$this->host.'leaders.php">' . $this->idiom->getLabel_leaders() . '</a></li>
-                        <li><a href="'.$this->host.'">' . $this->idiom->getLabel_voter() . '</a></li>
-                        <li><a href="'.$this->host.'">' . $this->idiom->getLabel_query_place() . '</a></li>
+                        <li><a href="' . $this->host . 'leaders.php">' . $this->idiom->getLabel_leaders() . '</a></li>
+                        <li><a href="' . $this->host . '">' . $this->idiom->getLabel_voter() . '</a></li>
+                        <li><a href="' . $this->host . '">' . $this->idiom->getLabel_query_place() . '</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $this->idiom->getLabel_stadistics() . '<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="'.$this->host.'stadistics_town.php">' . $this->idiom->getLabel_place() . '</a></li>
-                                <li><a href="'.$this->host.'stadistics_departament.php">' . $this->idiom->getLabel_town() . '</a></li>
+                                <li><a href="' . $this->host . 'stadistics_town.php">' . $this->idiom->getLabel_place() . '</a></li>
+                                <li><a href="' . $this->host . 'stadistics_departament.php">' . $this->idiom->getLabel_town() . '</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -48,9 +48,15 @@ class ElementHTML {
                 </div>
             </nav>  ';
     }
-    function load_table_depart_town(){
+
+    function load_table_depart_town() {
         //
     }
+
+    function getHost() {
+        return $this->host;
+    }
+
 }
 
 ?>
