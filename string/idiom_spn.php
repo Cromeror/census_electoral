@@ -17,19 +17,29 @@ class Idiom {
     private $label_sign_out = "Salir";
     //***modal voter***
     private $modal_add_voter = "Agregar Votante";
-    private $modal_label_cc = "Cédula de ciudadania";
+    private $modal_label_cc = "Cédula de ciudadanía";
     private $modal_label_name = "Nombre";
     private $modal_label_lastname = "Apellidos";
     private $modal_label_departament = "Departamento";
     private $modal_label_town = "Municipio";
     private $modal_label_place = "Lugar de votación";
     private $modal_label_dir_place = "Dirección del lugar";
-    private $modal_label_table = "Mesa de votación";
+    private $modal_label_table = "Mesa";
     private $modal_label_tel = "Teléfono";
-    //********************
+    //****action btn****
+    private $btn_close = "Cerrar";
+    private $btn_save = "Guardar";
 
     function __construct() {
         
+    }
+
+    function getBtn_close() {
+        return $this->btn_close;
+    }
+
+    function getBtn_save() {
+        return $this->btn_save;
     }
 
     function getModal_label_cc() {

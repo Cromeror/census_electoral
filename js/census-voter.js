@@ -1,0 +1,17 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+$(document).ready(function () {
+    var host = "http://localhost/census_electoral/";
+    $("#btn-a").click(function () {
+        $("#load_voter").load("http://localhost/census_electoral/html_block.php?op=1");
+    });
+    function cargar(div, desde)
+    {
+        $(div).load(desde);
+    }
+});
