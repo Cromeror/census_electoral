@@ -43,7 +43,7 @@ class ElementHTML {
                     <ul class="nav navbar-nav">
                         <li><a href="' . $this->host . 'leaders.php">' . $this->idiom->getLabel_leaders() . '</a></li>
                         <li><a href="' . $this->host . 'voters.php">' . $this->idiom->getLabel_voter() . '</a></li>
-                        <li><a href="' . $this->host . '">' . $this->idiom->getLabel_query_place() . '</a></li>
+                        <li><a href="' . $this->host . 'query_place_voter.php">' . $this->idiom->getLabel_query_place() . '</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $this->idiom->getLabel_stadistics() . '<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -72,7 +72,7 @@ class ElementHTML {
                         <form role="form" id="log_in" action="voters.php" method="get">
                             <label for="modal_cc">' . $this->idiom->getModal_label_cc() . '</label>
                             <div class="input-group">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" onkeypress="return justNumbers(event);">
                                 <a class="input-group-addon" id="btn-a" href="#"><span class="glyphicon glyphicon-search"></span></a>
                             </div>
                                 <div class="row">
@@ -88,7 +88,7 @@ class ElementHTML {
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="modal_tel">' . $this->idiom->getModal_label_tel() . '</label>
-                                        <input type="text" class="form-control" id="modal_tel">
+                                        <input type="tel" class="form-control" id="modal_tel" onkeypress="return justNumbers(event);">
                                     </div>
                                 </div>
                                 <hr>
@@ -115,7 +115,7 @@ class ElementHTML {
                                 <div class="row" style="margin-bottom: 10px;">
                                     <div class="col-md-6">
                                         <label for="modal_table">' . $this->idiom->getModal_label_table() . '</label>
-                                        <input type="text" class="form-control" id="modal_table">
+                                        <input type="text" class="form-control" id="modal_table" onkeypress="return justNumbers(event);">
                                     </div>
                                 </div>
                             </div>

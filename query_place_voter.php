@@ -24,7 +24,6 @@ $elements = new ElementHTML();
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Cédula de ciudadanía">
                         </div>
-
                         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                     </form>
                     <div  class="navbar-right" style="margin-top: 10px">
@@ -38,41 +37,20 @@ $elements = new ElementHTML();
             </div>
         </div>
         <!--**************************************************-->
-        <div class="container" style="padding-top: 10%">
-            <table class="table table-condensed table-hover table-responsive">
-                <tr>
-                    <td><strong></strong></td>
-                    <td><strong>Cédula de ciudadanía</strong></td>
-                    <td><strong>Nombre</strong></td>
-                    <td><strong>Apellidos</strong></td>
-                    <td><strong>Departamento</strong></td>
-                    <td><strong>Municipio</strong></td>
-                    <td><strong>Puesto</strong></td>
-                    <td><strong>Mesa</strong></td>
-                </tr>
-                <?php for ($index = 0; $index < 20; $index++) { ?>
-                    <tr>
-                        <td><div class="checkbox" style="margin: 0px;"><label><input type="checkbox" value=""></label></div></td>
-                        <td>00000000</td>
-                        <td>fulano</td>
-                        <td>de tal</td>
-                        <td>bolivar</td>
-                        <td>cartagena</td>
-                        <td>terminal</td>
-                        <td>5</td>
-                    </tr>
-                <?php } ?>
-                <!-- modal_add_voter -->
-                <div class="modal fade" id="modal_add_voter">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div id="load_voter">
-                                <?php echo $elements->load_modal_add_voter(); ?>
-                            </div>
+        <div class="container">
+            <div class="row" style="margin-top: 20%">
+                <div class="col-md-3">
+                    <div class="modal-content " style="padding: 10px">
+                        <div style="margin: 10px">
+                            <label>Digite número de cédula</label>
+                            <input type="number" class=" form-control center-block" placeholder="Digite su cédula">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class=" btn btn-default center-block">Buscar</button>
                         </div>
                     </div>
                 </div>
-            </table>
+            </div>
         </div>
     </body>
 </html>
