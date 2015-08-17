@@ -20,18 +20,8 @@ $elements = new ElementHTML();
             <?php $elements->load_navbar(); ?>
             <div class="navbar navbar-default border-none">
                 <div class="container">   
-                    <form class="navbar-form navbar-left" role="search" style="margin-top: 10px">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Cédula de ciudadanía">
-                        </div>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-                    </form>
                     <div  class="navbar-right" style="margin-top: 10px">
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal_add_voter" style="margin-right: 10px"><span class="glyphicon glyphicon-plus" ></span></button>
-                        <div class="btn-group" >
-                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" ></span></button>
-                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-                        </div>
                     </div>
                 </div>
             </div>

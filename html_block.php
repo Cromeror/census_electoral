@@ -34,7 +34,7 @@ class ElementHTML {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Logotipo</a>
+                    <a class="navbar-brand" href="' . $this->host . '">Logotipo</a>
                 </div>
 
                 <!-- Agrupar los enlaces de navegación, los formularios y cualquier
