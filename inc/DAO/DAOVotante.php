@@ -97,16 +97,20 @@ $lista2[0][6] = $lista[6];
             $consulta = "SELECT votante.cc_votante, votante.nombre_votante, votante.apellido_votante, puesto_votacion.departamento, puesto_votacion.municipio, puesto_votacion.puesto, puesto_votacion.mesa FROM `lista_votante_lider`, `puesto_votacion`, `zonificacion`, `votante` WHERE lista_votante_lider.cc_votante=votante.cc_votante  AND zonificacion.cc_votante=votante.cc_votante AND zonificacion.id_puesto=puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_lider=".$cc_lider;
             $resultado=$conexion->consultar_servidor($consulta);
 //            $lista = mysql_fetch_array($resultado);
-            for($x=0;$x<5;$x++){
+            
+           //SELECT COUNT(*) FROM `lista_votante_lider`, `puesto_votacion`, `zonificacion`, `votante` WHERE lista_votante_lider.cc_votante=votante.cc_votante AND zonificacion.cc_votante=votante.cc_votante AND zonificacion.id_puesto=puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_lider=80 
+            for($x=0;$x<3000;$x++){
             $lista = mysql_fetch_array($resultado);
             if($lista==TRUE){
-            $lista2[$x][0] = $lista[0];
-            $lista2[$x][1] = $lista[1];
-            $lista2[$x][2] = $lista[2];
-            $lista2[$x][3] = $lista[3];
-            $lista2[$x][4] = $lista[4];
-            $lista2[$x][5] = $lista[5];
-            $lista2[$x][6] = $lista[6];
+           
+                $lista2[$x][0] = $lista[0];
+                $lista2[$x][1] = $lista[1];
+                $lista2[$x][2] = $lista[2];
+                $lista2[$x][3] = $lista[3];
+                $lista2[$x][4] = $lista[4];
+                $lista2[$x][5] = $lista[5];
+                $lista2[$x][6] = $lista[6];
+
 
 }
 //

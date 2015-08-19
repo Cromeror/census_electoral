@@ -62,6 +62,8 @@ $elements = new ElementHTML();
                     <td><strong>Telefono</strong></td>
                     <td><strong>Celular</strong></td>
                     <td><strong>Direccion</strong></td>
+                    <td><strong>Total Votacion</strong></td>
+                    
                    
                     
                 </tr>
@@ -74,7 +76,7 @@ $cc_candidato=40;
 $dao = new DAOLider();
 $lista = $dao->mostrarLider_Candidato($cc_candidato)            ;
                 
-                for ($x = 0; $x<  count($lista)/2;$x++){ ?>
+                for ($x = 0; $x<  count($lista);$x++){ ?>
                         <td><div class="checkbox" style="margin: 0px;"><label><input type="checkbox" value=""></label></div></td>
                         <td><?php echo $lista[$x][0];?></td>
                         <td><?php echo $lista[$x][1];?></td>
@@ -82,6 +84,10 @@ $lista = $dao->mostrarLider_Candidato($cc_candidato)            ;
                         <td><?php echo $lista[$x][3];?></td>
                         <td><?php echo $lista[$x][4];?></td>
                         <td><?php echo $lista[$x][5];?></td>
+                        <td><?php echo $lista[$x][6];?></td>
+                        
+ 
+                        
                     </tr>
                 <?php } ?>
                 <!-- modal_add_voter -->

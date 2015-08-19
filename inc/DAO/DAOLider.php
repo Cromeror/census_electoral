@@ -94,16 +94,69 @@ class DAOLider
             for($x=0;$x<300;$x++){
             $lista = mysql_fetch_array($resultado);
                      if($lista==TRUE){
-                     $lista2[$x][0] = $lista[0];
-                     $lista2[$x][1] = $lista[1];
-                     $lista2[$x][2] = $lista[2];
-                     $lista2[$x][3] = $lista[3];
-                     $lista2[$x][4] = $lista[4];
-                     $lista2[$x][5] = $lista[5];
+                            $consulta2 = "SELECT COUNT(*) FROM `lista_votante_lider` WHERE lista_votante_lider.cc_lider=".$lista[0];
+                            $resultado2=$conexion->consultar_servidor($consulta2);
+                            $lista3 = mysql_fetch_array($resultado2);
+                            $lista2[$x][0] = $lista[0];
+                            $lista2[$x][1] = $lista[1];
+                            $lista2[$x][2] = $lista[2];
+                            $lista2[$x][3] = $lista[3];
+                            $lista2[$x][4] = $lista[4];
+                            $lista2[$x][5] = $lista[5];
+                            $lista2[$x][6] = $lista3[0];
+                            
+                    }
+                }
+                $j=0;
+                for($x=0;$x<count($lista2);$x=$x+2){
+                            $listaaux[$j][0]=$lista2[$x][0];
+                            $listaaux[$j][1]=$lista2[$x][1];
+                            $listaaux[$j][2]=$lista2[$x][2];
+                            $listaaux[$j][3]=$lista2[$x][3];
+                            $listaaux[$j][4]=$lista2[$x][4];
+                            $listaaux[$j][5]=$lista2[$x][5];
+                            $listaaux[$j][6]=$lista2[$x][6];
+                            $j++;
+                            
+                }
+                
+                for($x=0;$x<count($listaaux)-1;$x++){
+                   for($j=$x+1;$j<count($listaaux);$j++){ 
+                    if($listaaux[$x][6]<$listaaux[$j][6]){
+                        $aux="";
+                        $aux= $listaaux[$x][6];
+                        $listaaux[$x][6]= $listaaux[$j][6];
+                        $listaaux[$j][6] =$aux;
+                        
+                        $aux = $listaaux[$x][5];
+                        $listaaux[$x][5]= $listaaux[$j][5];
+                        $listaaux[$j][5]=$aux;
+                        
+                        $aux= $listaaux[$x][4];
+                        $listaaux[$x][4]= $listaaux[$j][4];
+                        $listaaux[$j][4]=$aux;
+                        
+                        $aux= $listaaux[$x][3];
+                        $listaaux[$x][3]= $listaaux[$j][3];
+                        $listaaux[$j][3]=$aux;
+                        
+                        $aux= $listaaux[$x][2];
+                        $listaaux[$x][2]= $listaaux[$j][2];
+                        $listaaux[$j][2]=$aux;
+                        
+                        $aux= $listaaux[$x][1];
+                        $listaaux[$x][1]= $listaaux[$j][1];
+                        $listaaux[$j][1]=$aux;
+                        
+                        $aux= $listaaux[$x][0];
+                        $listaaux[$x][0]= $listaaux[$j][0];
+                        $listaaux[$j][0]=$aux;
+                    
+                    }
                     }
                 }
             $conexion->cerrar_conexion();
-            return $lista2;
+            return $listaaux;
         }
 
 }
