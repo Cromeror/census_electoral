@@ -26,8 +26,8 @@ class Conexion
 	{
         $URL = "localhost";
         $BD = "censo_votacion";
-        $USER = "ivan";
-        $PASSWORD = "ivan";
+        $USER = "root";
+        $PASSWORD = "bdatos";
         $this->connection_instance = mysql_connect($URL, $USER, $PASSWORD);
         mysql_select_db($BD, $this->connection_instance);
         }

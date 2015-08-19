@@ -8,7 +8,7 @@
 $(document).ready(function () {
     var host = "http://localhost/census_electoral/";
     $("#btn-a").click(function () {
-        $("#load_voter").load("http://localhost/census_electoral/html_block.php?op=1");
+        $("#load_voter").load(host + "html_block.php?op=1");
     });
     function cargar(div, desde)
     {

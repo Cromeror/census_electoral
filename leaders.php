@@ -82,8 +82,6 @@ $lista = $dao->mostrarLider_Candidato($cc_candidato)            ;
                         <td><?php echo $lista[$x][3];?></td>
                         <td><?php echo $lista[$x][4];?></td>
                         <td><?php echo $lista[$x][5];?></td>
- 
-                        
                     </tr>
                 <?php } ?>
                 <!-- modal_add_voter -->

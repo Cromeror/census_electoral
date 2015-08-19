@@ -1,13 +1,11 @@
 <?php
 
-
 /**
  * @author Romero Rossi
  * @version 1.0
  * @created 15-ago-2015 04:57:53 p.m.
  */
-class Votante
-{
+class Votante {
 
     private $cc_votante;
     private $nombre_votante;
@@ -15,8 +13,8 @@ class Votante
     private $tel_votante;
     private $cel_votante;
     private $dir_votante;
+    private $puesto;
 
-    
     function __construct($cc_votante, $nombre_votante, $apellido_votante, $tel_votante, $cel_votante, $dir_votante) {
         $this->cc_votante = $cc_votante;
         $this->nombre_votante = $nombre_votante;
@@ -24,7 +22,17 @@ class Votante
         $this->tel_votante = $tel_votante;
         $this->cel_votante = $cel_votante;
         $this->dir_votante = $dir_votante;
+        $this->puesto = null;
     }
+
+    function getPuesto() {
+        return $this->puesto;
+    }
+
+    function setPuesto($puesto) {
+        $this->puesto = $puesto;
+    }
+
     function getCc_votante() {
         return $this->cc_votante;
     }
@@ -73,9 +81,6 @@ class Votante
         $this->dir_votante = $dir_votante;
     }
 
-
-    
-	
-
 }
+
 ?>
