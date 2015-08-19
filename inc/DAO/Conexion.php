@@ -18,24 +18,24 @@ class Conexion
 	function consultar_servidor($consulta)
 	{
             $this->conectar_servidor();
-             return mysql_query($consulta, $this->conexion_instancia);
+        return mysql_query($consulta, $this->connection_instance);
 	}
 
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
         private function conectar_servidor()
 	{
-            $URL = "localhost";
-            $BD = "censo_votacion";
-            $USER = "ivan";
-            $PASSWORD = "ivan";
-            $this->conexion_instancia = mysql_connect($URL, $USER, $PASSWORD);
-            mysql_select_db($BD, $this->conexion_instancia);
+        $URL = "localhost";
+        $BD = "censo_votacion";
+        $USER = "ivan";
+        $PASSWORD = "ivan";
+        $this->connection_instance = mysql_connect($URL, $USER, $PASSWORD);
+        mysql_select_db($BD, $this->connection_instance);
         }
         
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES      
         function cerrar_conexion()
 	{
-            mysql_close($this->conexion_instancia);
+             mysql_close($this->connection_instance);
 	}
 }
 ?>

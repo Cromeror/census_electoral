@@ -78,11 +78,11 @@ class DAOPuestoVotacion
             
             $consulta = "SELECT `id_puesto` FROM `zonificacion` WHERE `cc_votante` = ".$cc_votante;
             $resultado = $conexion->consultar_servidor($consulta);
-            $fila = mysql_fetch_array($resultado);
+            $fila = mysqli_fetch_array($resultado);
             
             $consulta="SELECT * FROM `puesto_votacion` WHERE `id_puesto_votacion` = ".$fila[0];
             $resultado = $conexion->consultar_servidor($consulta);
-            $fila = mysql_fetch_array($resultado);
+            $fila = mysqli_fetch_array($resultado);
             $dao = new PuestoVotacion($fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5]);
             //echo $fila[0];
             //echo $fila[1];
@@ -92,14 +92,7 @@ class DAOPuestoVotacion
           
 	}
 
-        
-	function zonificacionPuestoVotacion($cc_votante,$id_puesto_votacion)
-	{
-            $conexion = new Conexion();
-            $consulta = "INSERT INTO `censo_votacion`.`zonificacion` (`id_zonificacion`, `cc_votante`, `id_puesto`) VALUES (NULL, '".$cc_votante."', '".$id_puesto_votacion."')";
-            $conexion->consultar_servidor($consulta);
-            $conexion->cerrar_conexion();
-	}
+ 
 
 }
 ?>

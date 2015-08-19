@@ -1,9 +1,27 @@
 <?php
 include_once getcwd() . '\html_block.php';
 include_once getcwd() . '\string\idiom_spn.php';
+include_once getcwd() . '\html_block.php';
+include_once getcwd() . '\inc\DAO\Conexion.php';
+include_once getcwd() . '\inc\DAO\BuscaServicio.php';
+include_once getcwd() . '\inc\DAO\DAOCandidato.php';
+include_once getcwd() . '\inc\DAO\DAOLider.php';
+include_once getcwd() . '\inc\DAO\DAOListaCandidato_Votante.php';
+include_once getcwd() . '\inc\DAO\DAOListaVotante_Lider.php';
+include_once getcwd() . '\inc\DAO\DAOVotante.php';
+include_once getcwd() . '\inc\DAO\DAOPuestoVotacion.php';
+include_once getcwd() . '\inc\DAO\DAOListas.php';
+include_once getcwd() . '\inc\DAO\Zonificacion.php';
+include_once getcwd() . '\inc\modelo_logico\PuestoVotacion.php';
+include_once getcwd() . '\inc\modelo_logico\Votante.php';
+include_once getcwd() . '\inc\modelo_logico\Lider.php';
+include_once getcwd() . '\inc\modelo_logico\Candidato.php';
 
 $elements = new ElementHTML();
 $idiom = new Idiom();
+$cc_lider=80;
+$DAO = new DAOVotante();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,16 +70,24 @@ $idiom = new Idiom();
                     <td><strong><?php echo $idiom->getModal_label_place(); ?></strong></td>
                     <td><strong><?php echo $idiom->getModal_label_table(); ?></strong></td>
                 </tr>
-                <?php for ($index = 0; $index < 20; $index++) { ?>
-                    <tr>
+                <?php 
+                
+
+$cc_lider=80;
+
+$dao = new DAOVotante();
+$lista = $dao->mostrarListaVotantes_Lider($cc_lider);                
+                
+                for ($x = 0; $x<  count($lista);$x++){ ?>
                         <td><div class="checkbox" style="margin: 0px;"><label><input type="checkbox" value=""></label></div></td>
-                        <td>00000000</td>
-                        <td>fulano</td>
-                        <td>de tal</td>
-                        <td>bolivar</td>
-                        <td>cartagena</td>
-                        <td>terminal</td>
-                        <td>5</td>
+                        <td><?php echo $lista[$x][0];?></td>
+                        <td><?php echo $lista[$x][1];?></td>
+                        <td><?php echo $lista[$x][2];?></td>
+                        <td><?php echo $lista[$x][3];?></td>
+                        <td><?php echo $lista[$x][4];?></td>
+                        <td><?php echo $lista[$x][5];?></td>
+                        <td><?php echo $lista[$x][6];?></td>
+                        
                     </tr>
                 <?php } ?>
             </table>

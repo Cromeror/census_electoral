@@ -85,6 +85,26 @@ class DAOLider
                 echo "No se encuentra Lider en la Base de Datos";
             }
 	}
+        
+        function mostrarLider_Candidato($cc_candidato){
+            $conexion = new Conexion();
+            $consulta = "SELECT lider.cc_lider, lider.nombre_lider, lider.apellido_lider, lider.tel_lider, lider.cel_lider, lider.dir_lider FROM `lista_candidato_lider`, `lider`,`candidato` WHERE  lista_candidato_lider.cc_lider=lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
+            $resultado=$conexion->consultar_servidor($consulta);
+//            $lista = mysql_fetch_array($resultado);
+            for($x=0;$x<300;$x++){
+            $lista = mysql_fetch_array($resultado);
+                     if($lista==TRUE){
+                     $lista2[$x][0] = $lista[0];
+                     $lista2[$x][1] = $lista[1];
+                     $lista2[$x][2] = $lista[2];
+                     $lista2[$x][3] = $lista[3];
+                     $lista2[$x][4] = $lista[4];
+                     $lista2[$x][5] = $lista[5];
+                    }
+                }
+            $conexion->cerrar_conexion();
+            return $lista2;
+        }
 
 }
 ?>

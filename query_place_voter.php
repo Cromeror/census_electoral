@@ -31,13 +31,15 @@ $elements = new ElementHTML();
             <div class="row" style="margin-top: 20%">
                 <div class="col-md-3">
                     <div class="modal-content " style="padding: 10px">
-                        <div style="margin: 10px">
-                            <label>Digite número de cédula</label>
-                            <input type="number" class=" form-control center-block" placeholder="Digite su cédula">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class=" btn btn-default center-block">Buscar</button>
-                        </div>
+                        <form action="inc/DAO/DAOPuestoVotacion.php" method="post">
+                            <div style="margin: 10px">
+                                <label>Digite número de cédula</label>
+                                <input type="number" class=" form-control center-block" placeholder="Digite su cédula">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" btn btn-default center-block">Buscar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

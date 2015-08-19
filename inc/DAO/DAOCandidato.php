@@ -9,7 +9,7 @@ class DAOCandidato
             $conexion = new Conexion();
             $consulta ="SELECT `cc_candidato` FROM `candidato` WHERE `cc_candidato` = ".$cc_candidato;
             $resultado = $conexion->consultar_servidor($consulta);
-            $fila = mysql_fetch_array($resultado);
+            $fila = mysqli_fetch_array($resultado);
             if($fila[0]==$cc_candidato){
                 $conexion->cerrar_conexion();
                 echo 'El Candidato se encuentra registrado';
@@ -52,7 +52,7 @@ class DAOCandidato
             $conexion = new Conexion();
             $consulta = "SELECT `cc_candidato`, `nombre_candidato`, `apellido_candidato`, `id_aspiracion`, `id_partido_politico`, `tel_candidato`, `cel_candidato`, `dir_candidato` FROM `candidato` WHERE `cc_candidato` = ".$cc_candidato;
             $resultado = $conexion->consultar_servidor($consulta);
-            $fila = mysql_fetch_array($resultado);
+            $fila = mysqli_fetch_array($resultado);
             $conexion->cerrar_conexion();
             if($cc_candidato==$fila[0]){
             return new Candidato($fila[0], $fila[1], $fila[2], $fila[3], $fila[4],$fila[5],$fila[6],$fila[7]);

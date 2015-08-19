@@ -1,5 +1,19 @@
 <?php
 include_once getcwd() . '\html_block.php';
+include_once getcwd() . '\inc\DAO\Conexion.php';
+include_once getcwd() . '\inc\DAO\BuscaServicio.php';
+include_once getcwd() . '\inc\DAO\DAOCandidato.php';
+include_once getcwd() . '\inc\DAO\DAOLider.php';
+include_once getcwd() . '\inc\DAO\DAOListaCandidato_Votante.php';
+include_once getcwd() . '\inc\DAO\DAOListaVotante_Lider.php';
+include_once getcwd() . '\inc\DAO\DAOVotante.php';
+include_once getcwd() . '\inc\DAO\DAOPuestoVotacion.php';
+include_once getcwd() . '\inc\DAO\DAOListas.php';
+include_once getcwd() . '\inc\DAO\Zonificacion.php';
+include_once getcwd() . '\inc\modelo_logico\PuestoVotacion.php';
+include_once getcwd() . '\inc\modelo_logico\Votante.php';
+include_once getcwd() . '\inc\modelo_logico\Lider.php';
+include_once getcwd() . '\inc\modelo_logico\Candidato.php';
 
 $elements = new ElementHTML();
 ?>
@@ -45,21 +59,31 @@ $elements = new ElementHTML();
                     <td><strong>Cédula de ciudadanía</strong></td>
                     <td><strong>Nombre</strong></td>
                     <td><strong>Apellidos</strong></td>
-                    <td><strong>Departamento</strong></td>
-                    <td><strong>Municipio</strong></td>
-                    <td><strong>Puesto</strong></td>
-                    <td><strong>Mesa</strong></td>
+                    <td><strong>Telefono</strong></td>
+                    <td><strong>Celular</strong></td>
+                    <td><strong>Direccion</strong></td>
+                   
+                    
                 </tr>
-                <?php for ($index = 0; $index < 20; $index++) { ?>
-                    <tr>
+                
+                <?php 
+                
+
+$cc_candidato=40;
+
+$dao = new DAOLider();
+$lista = $dao->mostrarLider_Candidato($cc_candidato)            ;
+                
+                for ($x = 0; $x<  count($lista)/2;$x++){ ?>
                         <td><div class="checkbox" style="margin: 0px;"><label><input type="checkbox" value=""></label></div></td>
-                        <td>00000000</td>
-                        <td>fulano</td>
-                        <td>de tal</td>
-                        <td>bolivar</td>
-                        <td>cartagena</td>
-                        <td>terminal</td>
-                        <td>5</td>
+                        <td><?php echo $lista[$x][0];?></td>
+                        <td><?php echo $lista[$x][1];?></td>
+                        <td><?php echo $lista[$x][2];?></td>
+                        <td><?php echo $lista[$x][3];?></td>
+                        <td><?php echo $lista[$x][4];?></td>
+                        <td><?php echo $lista[$x][5];?></td>
+ 
+                        
                     </tr>
                 <?php } ?>
                 <!-- modal_add_voter -->

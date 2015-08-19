@@ -6,7 +6,7 @@ class DAOListaCandidato_Votante
 
 	
     
-	function mostrarListaCandidato_Votante($cc_candidato)
+	function mostrarListaVotantes($cc_candidato)
 	{
             
             $conexion = new Conexion();
@@ -88,11 +88,15 @@ class DAOListaCandidato_Votante
         }
 
         
-	function modificarListaVotante_Candidato($cc_candidato, $cc_votante)
+	function modificarListaVotante_Candidato($cc_candidato_antes, $cc_candidato_actual,$cc_votante)
 	{
-            
+            $fila="";
             $conexion = new Conexion();
-            
+            $consulta = "SELECT `id_lista` FROM `lista_candidato_votante` WHERE `cc_candidato`='".$cc_candidato_antes."' AND `cc_votante`=".$cc_votante;
+            $resultado = $conexion->consultar_servidor($consulta);
+            $fila = mysql_fetch_row($resultado);
+            echo $fila[0];
+            $consulta = "UPDATE `lista_candidato_votante` SET `cc_candidato`='".$cc_candidato_actual."' WHERE `id_lista`=".$fila[0];
             $conexion->consultar_servidor($consulta);
             $conexion->cerrar_conexion();
 	}
