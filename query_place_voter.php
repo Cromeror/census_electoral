@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (empty($_SESSION['user'])) {
+    header('Location: index.php');
+}
 include_once getcwd() . '\html_block.php';
 $elements = new ElementHTML();
 ?>
@@ -15,6 +19,7 @@ $elements = new ElementHTML();
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/census-voter.js"></script>
         <div class="navbar navbar-default navbar-fixed-top" style="padding-left: 20px; padding-right: 20px; margin-bottom: 10px">
             <?php $elements->load_navbar(); ?>
             <div class="navbar navbar-default border-none">
@@ -32,14 +37,15 @@ $elements = new ElementHTML();
                     <div class="modal-content " style="padding: 10px">
                         <div style="margin: 10px">
                             <label>Digite número de cédula</label>
-                            <input type="text" name="doc" class=" form-control center-block" placeholder="Digite su cédula">
+                            <input type="text" id="doc" name="doc" class=" form-control center-block" placeholder="Digite su cédula">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class=" btn btn-default center-block">Buscar</button>
+                            <button type="button" id="submit_pet" class=" btn btn-default center-block">Buscar</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div id="result_serv"></div>
                 </div>
             </div>
         </div>

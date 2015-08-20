@@ -1,7 +1,10 @@
 <?php
+session_start();
 include_once getcwd() . '\html_block.php';
 include_once getcwd() . '\string\idiom_spn.php';
-
+if (isset($_SESSION['user'])) {
+    header('Location: http://localhost/census_electoral/leaders.php');
+}
 $elements = new ElementHTML();
 $idiom = new Idiom();
 ?>
@@ -29,19 +32,19 @@ $idiom = new Idiom();
                             <div class="page-header">
                                 <h3><?php echo $idiom->getTitle_login(); ?></h3>
                             </div>
-                            <form role="form" id="log_in" action="leaders.php" method="post">
+                            <form role="form" id="log_in" action="inc/log_in.php" method="post">
                                 <div class="form-group">
                                     <label for="loginUsername"><?php echo $idiom->getUsername(); ?></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input type="text" class="form-control" id="loginUsername" placeholder="<?php echo $idiom->getClue_username(); ?>">
+                                        <input type="text" class="form-control" id="loginUsername" name="loginUsername" placeholder="<?php echo $idiom->getClue_username(); ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="loginPassword"><?php echo $idiom->getPassword(); ?></label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                        <input type="password" class="form-control" id="loginPassword" placeholder="<?php echo $idiom->getClue_password(); ?>">
+                                        <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="<?php echo $idiom->getClue_password(); ?>">
                                     </div>
                                 </div>
                                 <hr/>

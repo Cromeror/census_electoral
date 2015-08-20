@@ -1,6 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['user'])) {
+    header('Location: index.php');
+}
 include_once getcwd() . '\html_block.php';
-
 $elements = new ElementHTML();
 ?>
 <!DOCTYPE html>

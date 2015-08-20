@@ -53,7 +53,8 @@ class ElementHTML {
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">' . $this->idiom->getLabel_sign_out() . '</a></li>
+                    <li>
+                    <a href="'.$this->host .'inc/log_out.php">' . $this->idiom->getLabel_sign_out() . '</a></li>
                     </ul>
                 </div>
             </nav>  ';

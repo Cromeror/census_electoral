@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include_once getcwd() . '\DAO\Conexion.php';
 
 class DAOSesion {
@@ -8,22 +10,24 @@ class DAOSesion {
     }
 
     function iniciarSesion($user, $pass) {
-        $conexion = new Conexion();
-        $consulta = "SELECT * FROM `login` WHERE `cc_usuario` = " . $user . " and `contraseña` = " . $pass;
-        $result = $conexion->query_server($consulta);
-        if ($result != NULL) {
-            echo 'Es distinto de nulll';
-            if (mysql_num_rows($result) > 0) {
-                while ($row = mysql_fetch_array($result)) {
-                    echo $row[3];
+        try {
+            $conexion = new Conexion();
+            $consulta = "SELECT * FROM `login` WHERE `cc_usuario` = " . $user . " and `contrasena` = " . $pass;
+            $result = $conexion->consultar_servidor($consulta);
+            if ($result != NULL) {
+                if (mysql_num_rows($result) > 0) {
+                    while ($row = mysql_fetch_array($result)) {
+                        $_SESSION['user'] = $row['cc_usuario'];
+                        $_SESSION['tipo'] = $row['tipo_usuario'];
+                    }
+                } else {
+                    return "No found";
                 }
-            } else {
-                //no results, you can put a message here...
+                mysql_free_result($result);
             }
-            mysql_free_result($result);
+        } catch (Exception $e) {
+            return null;
         }
-
-        echo $user . ' - ' . $pass;
     }
 
 }
