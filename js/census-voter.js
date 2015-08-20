@@ -10,6 +10,9 @@ $(document).ready(function () {
     $("#btn-a").click(function () {
         $("#load_voter").load(host + "html_block.php?op=1");
     });
+    $("#submit_pet").click(function () {
+        $("#result_serv").load(host + "/inc/html_block_service.php?doc=" + $("#doc").val());
+    });
     function cargar(div, desde)
     {
         $(div).load(desde);

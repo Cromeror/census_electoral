@@ -44,7 +44,7 @@ $elements = new ElementHTML();
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <div id="result_serv"></div>
                 </div>
             </div>
