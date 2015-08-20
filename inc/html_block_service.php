@@ -44,6 +44,9 @@ function load_result_serv($documento) {
                             <td>' . $result['mesa'] . '</td>
                         </tr>
                     </table>';
+    
+    
+       
 }
 
 ?>

@@ -1,11 +1,7 @@
 <?php
-session_start();
-if (empty($_SESSION['user'])) {
-    header('Location: http://localhost/census_electoral/index.php');
-}
 include_once getcwd() . '\html_block.php';
 include_once getcwd() . '\inc\DAO\Conexion.php';
-include_once getcwd() . '\inc\DAO\BuscaServicio.php';
+include_once getcwd() . '\inc\DAO\BuscarServicios.php';
 include_once getcwd() . '\inc\DAO\DAOCandidato.php';
 include_once getcwd() . '\inc\DAO\DAOLider.php';
 include_once getcwd() . '\inc\DAO\DAOListaCandidato_Votante.php';
@@ -18,6 +14,7 @@ include_once getcwd() . '\inc\modelo_logico\PuestoVotacion.php';
 include_once getcwd() . '\inc\modelo_logico\Votante.php';
 include_once getcwd() . '\inc\modelo_logico\Lider.php';
 include_once getcwd() . '\inc\modelo_logico\Candidato.php';
+
 $elements = new ElementHTML();
 ?>
 <!DOCTYPE html>
@@ -65,25 +62,32 @@ $elements = new ElementHTML();
                     <td><strong>Telefono</strong></td>
                     <td><strong>Celular</strong></td>
                     <td><strong>Direccion</strong></td>
-
-
+                    <td><strong>Total Votacion</strong></td>
+                    
+                   
+                    
                 </tr>
+                
+                <?php 
+                
 
-                <?php
-                $cc_candidato = 40;
+$cc_candidato=40;
 
-                $dao = new DAOLider();
-                $lista = $dao->mostrarLider_Candidato($cc_candidato);
-
-                for ($x = 0; $x < count($lista) / 2; $x++) {
-                    ?>
-                    <td><div class="checkbox" style="margin: 0px;"><label><input type="checkbox" value=""></label></div></td>
-                    <td><?php echo $lista[$x][0]; ?></td>
-                    <td><?php echo $lista[$x][1]; ?></td>
-                    <td><?php echo $lista[$x][2]; ?></td>
-                    <td><?php echo $lista[$x][3]; ?></td>
-                    <td><?php echo $lista[$x][4]; ?></td>
-                    <td><?php echo $lista[$x][5]; ?></td>
+$dao = new DAOLider();
+$lista = $dao->mostrarLider_Candidato($cc_candidato)            ;
+                
+                for ($x = 0; $x<  count($lista);$x++){ ?>
+                        <td><div class="checkbox" style="margin: 0px;"><label><input type="checkbox" value=""></label></div></td>
+                        <td><?php echo $lista[$x][0];?></td>
+                        <td><?php echo $lista[$x][1];?></td>
+                        <td><?php echo $lista[$x][2];?></td>
+                        <td><?php echo $lista[$x][3];?></td>
+                        <td><?php echo $lista[$x][4];?></td>
+                        <td><?php echo $lista[$x][5];?></td>
+                        <td><?php echo $lista[$x][6];?></td>
+                        
+ 
+                        
                     </tr>
                 <?php } ?>
                 <!-- modal_add_voter -->

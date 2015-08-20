@@ -99,7 +99,7 @@ $lista2[0][6] = $lista[6];
 //            $lista = mysql_fetch_array($resultado);
             
            //SELECT COUNT(*) FROM `lista_votante_lider`, `puesto_votacion`, `zonificacion`, `votante` WHERE lista_votante_lider.cc_votante=votante.cc_votante AND zonificacion.cc_votante=votante.cc_votante AND zonificacion.id_puesto=puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_lider=80 
-            for($x=0;$x<3000;$x++){
+            for($x=0;$x<20;$x++){
             $lista = mysql_fetch_array($resultado);
             if($lista==TRUE){
            

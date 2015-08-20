@@ -7,7 +7,7 @@ include_once getcwd() . '\html_block.php';
 include_once getcwd() . '\string\idiom_spn.php';
 include_once getcwd() . '\html_block.php';
 include_once getcwd() . '\inc\DAO\Conexion.php';
-include_once getcwd() . '\inc\DAO\BuscaServicio.php';
+include_once getcwd() . '\inc\DAO\BuscarServicios.php';
 include_once getcwd() . '\inc\DAO\DAOCandidato.php';
 include_once getcwd() . '\inc\DAO\DAOLider.php';
 include_once getcwd() . '\inc\DAO\DAOListaCandidato_Votante.php';
@@ -22,8 +22,7 @@ include_once getcwd() . '\inc\modelo_logico\Lider.php';
 include_once getcwd() . '\inc\modelo_logico\Candidato.php';
 $elements = new ElementHTML();
 $idiom = new Idiom();
-$cc_lider = 80;
-$DAO = new DAOVotante();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +72,7 @@ $DAO = new DAOVotante();
                     <td><strong><?php echo $idiom->getModal_label_table(); ?></strong></td>
                 </tr>
                 <?php
-                $cc_lider = 80;
+                $cc_lider = 81;
 
                 $dao = new DAOVotante();
                 $lista = $dao->mostrarListaVotantes_Lider($cc_lider);
