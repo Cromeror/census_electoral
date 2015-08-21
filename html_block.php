@@ -1,6 +1,8 @@
 <?php
 
 include_once getcwd() . '\string\idiom_spn.php';
+include_once getcwd() . '\inc\DAO\DAOLider.php';
+include_once getcwd() . '\inc\DAO\Conexion.php';
 
 if (isset($_GET["op"]) && !empty($_GET["op"])) {
     $op = $_GET["op"];
@@ -54,7 +56,7 @@ class ElementHTML {
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                     <li>
-                    <a href="'.$this->host .'inc/log_out.php">' . $this->idiom->getLabel_sign_out() . '</a></li>
+                    <a href="' . $this->host . 'inc/log_out.php">' . $this->idiom->getLabel_sign_out() . '</a></li>
                     </ul>
                 </div>
             </nav>  ';
@@ -62,6 +64,42 @@ class ElementHTML {
 
     function load_table_depart_town() {
         //
+    }
+
+    function load_tabla_voters() {
+        
+    }
+
+    function load_tabla_leaders($user) {
+        echo '<tr>
+                    <td><strong></strong></td>
+                    <td><strong>Cédula de ciudadanía</strong></td>
+                    <td><strong>Nombre</strong></td>
+                    <td><strong>Apellidos</strong></td>
+                    <td><strong>Telefono</strong></td>
+                    <td><strong>Celular</strong></td>
+                    <td><strong>Direccion</strong></td>
+                    <td><strong>Total Votacion</strong></td>
+                </tr>';
+//        echo 'user: '.$user;
+        $cc_candidato = $user;
+        $dao = new DAOLider();
+        $lista = $dao->mostrarLider_Candidato($cc_candidato);
+        for ($x = 0; $x < count($lista); $x++) {
+            echo '
+                    <tr>
+                        <td><div class="checkbox" style="margin: 0px;"><label>
+                            <input type="radio" name="del" data-col="' . $lista[$x][0] . '">
+                        </label></div></td>
+                        <td>' . $lista[$x][0] . '</td>
+                        <td>' . $lista[$x][1] . '</td>
+                        <td>' . $lista[$x][2] . '</td>
+                        <td>' . $lista[$x][3] . '</td>
+                        <td>' . $lista[$x][4] . '</td>
+                        <td>' . $lista[$x][5] . '</td>
+                        <td>' . $lista[$x][6] . '</td>
+                    </tr>';
+        }
     }
 
     function load_modal_add_voter() {

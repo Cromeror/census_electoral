@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `alianza` (
   `id_alianza` int(11) NOT NULL,
   `cc_candidato1er` int(11) NOT NULL,
   `cc_candidato2do` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+)  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `alianza` (
 CREATE TABLE IF NOT EXISTS `aspiracion` (
   `id_aspiracion` int(11) NOT NULL,
   `aspiracion` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `aspiracion`
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `candidato` (
   `tel_candidato` int(11) DEFAULT NULL,
   `cel_candidato` bigint(11) DEFAULT NULL,
   `dir_candidato` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+)  DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `candidato`
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `divipol` (
   `departamento` text NOT NULL,
   `municipio` text NOT NULL,
   `corregimiento` text
-) ENGINE=InnoDB AUTO_INCREMENT=431 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=431 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `divipol`
@@ -540,7 +540,7 @@ INSERT INTO `divipol` (`id_divipol`, `departamento`, `municipio`, `corregimiento
 CREATE TABLE IF NOT EXISTS `inscripcion_anulada` (
   `id_inscripcion` int(11) NOT NULL,
   `cc_votante` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+)  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -555,7 +555,7 @@ CREATE TABLE IF NOT EXISTS `inscripcion_candidato` (
   `id_partido` int(11) NOT NULL,
   `departamento` text NOT NULL,
   `municipio` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+)  DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `inscripcion_candidato`
@@ -578,7 +578,7 @@ CREATE TABLE IF NOT EXISTS `lider` (
   `tel_lider` int(11) DEFAULT NULL,
   `cel_lider` bigint(11) DEFAULT NULL,
   `dir_lider` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+)  DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `lider`
@@ -602,7 +602,7 @@ CREATE TABLE IF NOT EXISTS `lista_candidato_lider` (
   `id_lista` int(11) NOT NULL,
   `cc_candidato` int(11) NOT NULL,
   `cc_lider` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `lista_candidato_lider`
@@ -626,7 +626,7 @@ CREATE TABLE IF NOT EXISTS `lista_votante_lider` (
   `id_lista` int(11) NOT NULL,
   `cc_votante` int(11) NOT NULL,
   `cc_lider` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `lista_votante_lider`
@@ -652,7 +652,7 @@ CREATE TABLE IF NOT EXISTS `lista_votante_partido` (
   `id_lista` int(11) NOT NULL,
   `cc_votante` int(11) NOT NULL,
   `id_partido` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `lista_votante_partido`
@@ -672,7 +672,7 @@ CREATE TABLE IF NOT EXISTS `login` (
   `id_login` int(11) NOT NULL,
   `cc_usuario` int(11) NOT NULL,
   `contrasena` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `login`
@@ -690,7 +690,7 @@ INSERT INTO `login` (`id_login`, `cc_usuario`, `contrasena`) VALUES
 CREATE TABLE IF NOT EXISTS `partido_politico` (
   `id_partido_politico` int(11) NOT NULL,
   `partido_politico` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `partido_politico`
@@ -721,7 +721,7 @@ CREATE TABLE IF NOT EXISTS `puesto_votacion` (
   `puesto` text NOT NULL,
   `direccion` text NOT NULL,
   `mesa` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `puesto_votacion`
@@ -747,7 +747,7 @@ CREATE TABLE IF NOT EXISTS `votante` (
   `tel_votante` int(11) DEFAULT NULL,
   `cel_votante` bigint(11) DEFAULT NULL,
   `dir_votante` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+)  DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `votante`
@@ -773,7 +773,7 @@ CREATE TABLE IF NOT EXISTS `zonificacion` (
   `id_zonificacion` int(11) NOT NULL,
   `cc_votante` int(11) NOT NULL,
   `id_puesto` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+)  AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `zonificacion`

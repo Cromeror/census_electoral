@@ -1,19 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['user'])) {
+    header('Location: index.php');
+}
 include_once getcwd() . '\html_block.php';
-include_once getcwd() . '\inc\DAO\Conexion.php';
-include_once getcwd() . '\inc\DAO\BuscarServicios.php';
-include_once getcwd() . '\inc\DAO\DAOCandidato.php';
-include_once getcwd() . '\inc\DAO\DAOLider.php';
-include_once getcwd() . '\inc\DAO\DAOListaCandidato_Votante.php';
-include_once getcwd() . '\inc\DAO\DAOVotante.php';
-include_once getcwd() . '\inc\DAO\DAOPuestoVotacion.php';
-include_once getcwd() . '\inc\DAO\DAOListas.php';
-include_once getcwd() . '\inc\DAO\Zonificacion.php';
-include_once getcwd() . '\inc\modelo_logico\PuestoVotacion.php';
-include_once getcwd() . '\inc\modelo_logico\Votante.php';
-include_once getcwd() . '\inc\modelo_logico\Lider.php';
-include_once getcwd() . '\inc\modelo_logico\Candidato.php';
-
 $elements = new ElementHTML();
 ?>
 <!DOCTYPE html>
@@ -53,42 +43,9 @@ $elements = new ElementHTML();
         <!--**************************************************-->
         <div class="container" style="padding-top: 10%">
             <table class="table table-condensed table-hover table-responsive">
-                <tr>
-                    <td><strong></strong></td>
-                    <td><strong>Cédula de ciudadanía</strong></td>
-                    <td><strong>Nombre</strong></td>
-                    <td><strong>Apellidos</strong></td>
-                    <td><strong>Telefono</strong></td>
-                    <td><strong>Celular</strong></td>
-                    <td><strong>Direccion</strong></td>
-                    <td><strong>Total Votacion</strong></td>
-                    
-                   
-                    
-                </tr>
-                
-                <?php 
-                
-
-$cc_candidato=1047445333;
-
-$dao = new DAOLider();
-$lista = $dao->mostrarLider_Candidato($cc_candidato)            ;
-                
-                for ($x = 0; $x<  count($lista);$x++){ ?>
-                        <td><div class="checkbox" style="margin: 0px;"><label><input type="checkbox" value=""></label></div></td>
-                        <td><?php echo $lista[$x][0];?></td>
-                        <td><?php echo $lista[$x][1];?></td>
-                        <td><?php echo $lista[$x][2];?></td>
-                        <td><?php echo $lista[$x][3];?></td>
-                        <td><?php echo $lista[$x][4];?></td>
-                        <td><?php echo $lista[$x][5];?></td>
-                        <td><?php echo $lista[$x][6];?></td>
-                        
- 
-                        
-                    </tr>
-                <?php } ?>
+                <?php
+                $elements->load_tabla_leaders($_SESSION['user']);
+                ?>
                 <!-- modal_add_voter -->
                 <div class="modal fade" id="modal_add_voter">
                     <div class="modal-dialog">
