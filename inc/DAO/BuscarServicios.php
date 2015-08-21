@@ -2,6 +2,7 @@
 
 class BuscarServicios {
 
+////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
     public function muestraVotante($cc_votante) {
         $list1 = $this->muestraNombre($cc_votante);
         $list2 = $this->buscarPuestoVotacion($cc_votante);
@@ -16,8 +17,8 @@ class BuscarServicios {
         );
         return $result;
     }
-
-    public function muestraNombre($cc_votante) {
+////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
+private function muestraNombre($cc_votante) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://wssisbenconsulta.sisben.gov.co/DNP_SisbenConsulta/DNP_SISBEN_Consulta.aspx");
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -31,45 +32,36 @@ class BuscarServicios {
         $es = $this->Depurador_mejorado($es);
         $lista = $this->Pasarvariables_mejorado($es);
         $lista = $this->espacioscoienzoyfinal_mejorado($lista);
-//$this->ImprimirLista_mejorado($lista);
         if (empty($lista)) {
             return NULL;
         } else {
             return $lista;
         }
     }
-
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
 //////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-
-    public function buscarPuestoVotacion($cc_votante) {
-
+private  function buscarPuestoVotacion($cc_votante) {
         $es = file_get_contents("http://www3.registraduria.gov.co/censo/_censoresultado.php?nCedula=" . $cc_votante . "");
-//echo $es;
         $es = strip_tags($es);
         $es = $this->LimpiaTexto($es);
         $es = $this->Depurador($es);
-
-//$lista = str_split($es);
         $lista = $this->Pasarvariables($es);
         $lista = $this->espacioscoienzoyfinal($lista);
         $lista = $this->Eliminarbasura($lista);
         $lista = $this->espacioscoienzoyfinal($lista);
-//$this->ImprimirLista($lista);
         if (empty($lista)) {
             return NULL;
         } else {
             return $lista;
         }
     }
-
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
 //////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-    function espacioscoienzoyfinal($listanew) {
+ private    function espacioscoienzoyfinal($listanew) {
         $resultado = "";
         for ($x = 0; $x < count($listanew); $x++) {
             $resultado = $listanew[$x];
@@ -77,9 +69,8 @@ class BuscarServicios {
         }
         return $listanew;
     }
-
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-    function Eliminarbasura($lista) {
+  private   function Eliminarbasura($lista) {
         $resultado = "";
         $aux = "";
         $resultado = $lista[3];
@@ -101,9 +92,8 @@ class BuscarServicios {
         $lista[2] = $aux;
         return $lista;
     }
-
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-    function Pasarvariables($string) {
+  private   function Pasarvariables($string) {
         $j = 0;
         $aux;
         $listaux;
@@ -130,55 +120,40 @@ class BuscarServicios {
             $aux = $aux . $lista[$x];
         }
         $listanew[1] = $aux;
-        //echo $listanew[1];
         $aux = "";
-
         $x = $listaux[2] + 1;
         $j = $listaux[3];
         for ($x; $x < $j; $x++) {
             $aux = $aux . $lista[$x];
         }
         $listanew[2] = $aux;
-        //echo $listanew[1];
         $aux = "";
-
         $x = $listaux[3] + 1;
         $j = $listaux[4];
         for ($x; $x < $j; $x++) {
             $aux = $aux . $lista[$x];
         }
         $listanew[3] = $aux;
-//    echo $listanew[2];
         $aux = "";
-
         $x = $listaux[4] + 1;
         $j = $listaux[5];
         for ($x; $x < $j; $x++) {
             $aux = $aux . $lista[$x];
         }
         $listanew[4] = $aux;
-//    echo $listanew[3];
         $aux = "";
-
         $x = count($listaux) - 2;
         $j = count($listaux);
         for ($x; $x < $j; $x++) {
             $aux = $aux . $lista[$x];
         }
         $listanew[5] = $aux;
-//    echo $listanew[4];
         $aux = "";
-
-
         return $listanew;
-
-        //ImprimirLista($listaux);
     }
 
-// Fin Pasarvariables
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-
-    function extractTable($codeHTML) {
+ private    function extractTable($codeHTML) {
         $codeHTML = cutString($codeHTML, '<table>');
         //$codeHTML = substr($codeHTML, $posicion_coincidencia);
         $positionFinal = strpos($codeHTML, '</html>');
@@ -188,9 +163,8 @@ class BuscarServicios {
         $result = str_replace($delString, "/table>", $codeHTML);
         return $result;
     }
-
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-    function cutString($string, $searchString) {
+private     function cutString($string, $searchString) {
         $position = strpos($string, $searchString);
         if ($position === false) {
             return null;
@@ -198,22 +172,19 @@ class BuscarServicios {
             return substr($string, $position);
         }
     }
-
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-    function LimpiaTexto($es) {
+   private  function LimpiaTexto($es) {
         $es = str_replace("Departamento:", "*", $es);
         $es = str_replace("Municipio:", "*", $es);
         $es = str_replace("Dirección Puesto:", "*", $es);
         $es = str_replace("Puesto:", "*", $es);
-
         $es = str_replace("Dirección", "*", $es);
         $es = str_replace("Fecha de inscripciÃ³n:", "*", $es);
         $es = str_replace("Mesa", "*", $es);
         return $es;
     }
-
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-    function Depurador($es) {
+  private   function Depurador($es) {
         $lista = str_split($es);
         $j = count($lista);
         for ($x = 0; $x < 1326; $x++) {
@@ -239,32 +210,30 @@ class BuscarServicios {
         for ($x = 0; $x < count($lista); $x++) {
             $j++;
             if ((preg_match($regex, $lista[$x])) == 1) {
-                
             } else {
                 $resultado = $resultado . $lista[$x];
             }
         }
         return $resultado;
     }
-
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-    function ImprimirLista($lista) {
+  private   function ImprimirLista($lista) {
         for ($x = 0; $x < count($lista); $x++) {
             if ($x != 4) {
                 ?><br><?php echo $lista[$x]; ?></br><?php
             }
         }
     }
-
-    function LimpiaTexto_mejorado($es) {
+////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
+ private    function LimpiaTexto_mejorado($es) {
         $es = str_replace("Nombre:", "*", $es);
         $es = str_replace("Apellidos", "*", $es);
         $es = str_replace("Tipo", "*", $es);
 
         return $es;
     }
-
-    function Pasarvariables_mejorado($string) {
+////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
+private     function Pasarvariables_mejorado($string) {
         $j = 0;
         $aux;
         $listaux;
@@ -291,21 +260,10 @@ class BuscarServicios {
             $aux = $aux . $lista[$x];
         }
         $listanew[1] = $aux;
-        //echo $listanew[1];
-
-
         return $listanew;
-
-        //ImprimirLista($listaux);
     }
-
-    function ImprimirLista_mejorado($lista) {
-        for ($x = 0; $x < count($lista); $x++) {
-            ?><br><?php echo $lista[$x]; ?></br><?php
-        }
-    }
-
-    function espacioscoienzoyfinal_mejorado($listanew) {
+////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
+ private  function espacioscoienzoyfinal_mejorado($listanew) {
         $resultado = "";
         for ($x = 0; $x < count($listanew); $x++) {
             $resultado = $listanew[$x];
@@ -313,8 +271,8 @@ class BuscarServicios {
         }
         return $listanew;
     }
-
-    function Depurador_mejorado($es) {
+////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
+ private function Depurador_mejorado($es) {
         $lista = str_split($es);
         $j = count($lista);
         for ($x = 0; $x < 2500; $x++) {
@@ -347,6 +305,5 @@ class BuscarServicios {
         }
         return $resultado;
     }
-
 }
 ?>

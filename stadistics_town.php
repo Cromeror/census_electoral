@@ -52,12 +52,12 @@ $elements = new ElementHTML();
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for ($index = 0; $index < 50; $index++) {
+                                <?php for ($index = 0; $index < 9; $index++) {
                                     ?>
                                     <tr>
-                                        <td>Content 1</td>
-                                        <td>Content 2</td>
-                                        <td>Content 3</td>
+                                      <td>Cordoba</td>
+                                        <td>Cabecera Municipal</td>
+                                        <td>50</td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

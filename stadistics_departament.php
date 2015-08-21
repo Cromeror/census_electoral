@@ -48,6 +48,7 @@ $elements = new ElementHTML();
                                 <tr>
                                     <th>Departamento</th>
                                     <th>Municipio</th>
+                                    
                                     <th>Numero de votantes</th>
                                 </tr>
                             </thead>

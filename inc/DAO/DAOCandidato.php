@@ -17,6 +17,8 @@ class DAOCandidato
             }else{
                 $consulta = "INSERT INTO `censo_votacion`.`candidato` (`cc_candidato`, `nombre_candidato`, `apellido_candidato`, `id_aspiracion`, `id_partido_politico`, `tel_candidato`, `cel_candidato`, `dir_candidato`) VALUES ('".$cc_candidato."', '".$nombre_candidato."', '".$apellido_candidato."', '".$id_aspiracion."', '".$id_partido_politico."', '".$tel_candidato."', '".$cel_candidato."', '".$dir_candidato."')";
                 $resultado=$conexion->consultar_servidor($consulta);
+                $dao = new DAOLider();
+                $dao->agregarLider($cc_candidato, $nombre_lider, $apellido_lider, $tel_lider, $cel_lider, $dir_lider);
                 $conexion->cerrar_conexion();
                 if ($resultado==TRUE){
                     //El candidato se agrego a la Base de Datos

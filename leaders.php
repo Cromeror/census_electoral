@@ -5,7 +5,6 @@ include_once getcwd() . '\inc\DAO\BuscarServicios.php';
 include_once getcwd() . '\inc\DAO\DAOCandidato.php';
 include_once getcwd() . '\inc\DAO\DAOLider.php';
 include_once getcwd() . '\inc\DAO\DAOListaCandidato_Votante.php';
-include_once getcwd() . '\inc\DAO\DAOListaVotante_Lider.php';
 include_once getcwd() . '\inc\DAO\DAOVotante.php';
 include_once getcwd() . '\inc\DAO\DAOPuestoVotacion.php';
 include_once getcwd() . '\inc\DAO\DAOListas.php';
@@ -71,7 +70,7 @@ $elements = new ElementHTML();
                 <?php 
                 
 
-$cc_candidato=40;
+$cc_candidato=1047445333;
 
 $dao = new DAOLider();
 $lista = $dao->mostrarLider_Candidato($cc_candidato)            ;

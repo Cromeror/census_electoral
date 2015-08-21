@@ -9,6 +9,7 @@ if (isset($_GET["doc"])) {
 function load_result_serv($documento) {
     $service = new BuscarServicios();
     $result = $service->muestraVotante($documento);
+  
     echo '
                     <table class="table table-condensed table-hover ">
                         <tr>

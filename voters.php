@@ -11,7 +11,6 @@ include_once getcwd() . '\inc\DAO\BuscarServicios.php';
 include_once getcwd() . '\inc\DAO\DAOCandidato.php';
 include_once getcwd() . '\inc\DAO\DAOLider.php';
 include_once getcwd() . '\inc\DAO\DAOListaCandidato_Votante.php';
-include_once getcwd() . '\inc\DAO\DAOListaVotante_Lider.php';
 include_once getcwd() . '\inc\DAO\DAOVotante.php';
 include_once getcwd() . '\inc\DAO\DAOPuestoVotacion.php';
 include_once getcwd() . '\inc\DAO\DAOListas.php';
@@ -72,7 +71,7 @@ $idiom = new Idiom();
                     <td><strong><?php echo $idiom->getModal_label_table(); ?></strong></td>
                 </tr>
                 <?php
-                $cc_lider = 81;
+                $cc_lider = 1049453283;
 
                 $dao = new DAOVotante();
                 $lista = $dao->mostrarListaVotantes_Lider($cc_lider);
