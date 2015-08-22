@@ -26,3 +26,6 @@ function justNumbers(e)
         return true;
     return /\d/.test(String.fromCharCode(keynum));
 }
+function alerta(text) {
+    alert(text);
+}

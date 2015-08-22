@@ -66,12 +66,22 @@ class ElementHTML {
         //
     }
 
-    function load_tabla_voters() {
-        
+    function load_tabla_voters($user) {
+        echo '<tr>
+                    <td><strong></strong></td>
+                    <td><strong>Cédula de ciudadanía</strong></td>
+                    <td><strong>Nombre</strong></td>
+                    <td><strong>Apellidos</strong></td>
+                    <td><strong>Telefono</strong></td>
+                    <td><strong>Celular</strong></td>
+                    <td><strong>Direccion</strong></td>
+                    <td><strong>Total Votacion</strong></td>
+                </tr>';
     }
 
     function load_tabla_leaders($user) {
         echo '<tr>
+                    <td><strong></strong></td>
                     <td><strong></strong></td>
                     <td><strong>Cédula de ciudadanía</strong></td>
                     <td><strong>Nombre</strong></td>
@@ -88,9 +98,13 @@ class ElementHTML {
         for ($x = 0; $x < count($lista); $x++) {
             echo '
                     <tr>
-                        <td><div class="checkbox" style="margin: 0px;"><label>
-                            <input type="radio" name="del" data-col="' . $lista[$x][0] . '">
-                        </label></div></td>
+                        <td><div class="checkbox" style="margin: 0px;">
+                        <label>
+                            <input type="checkbox" name="del" data-col="' . $lista[$x][0] . '">
+                        </label>
+                        </div>
+                        </td>
+                        <td><label onclick="alerta();"><span  class="glyphicon glyphicon-eye-open"></span></label></td>
                         <td>' . $lista[$x][0] . '</td>
                         <td>' . $lista[$x][1] . '</td>
                         <td>' . $lista[$x][2] . '</td>

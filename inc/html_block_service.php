@@ -9,8 +9,44 @@ if (isset($_GET["doc"])) {
 function load_result_serv($documento) {
     $service = new BuscarServicios();
     $result = $service->muestraVotante($documento);
-  
-    echo '
+    if ($result == null) {
+        echo '
+                    <table class="table table-condensed table-hover ">
+                        <tr>
+                            <td><strong>Cédula de ciudadanía:</strong></td>
+                            <td>Documento No Encontrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombre:</strong></td>
+                            <td>No encontrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apellidos:</strong></td>
+                            <td>No encontrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Departamento:</strong></td>
+                            <td>No encontrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Municipio:</strong></td>
+                            <td>No encontrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Puesto de votación:</strong></td>
+                            <td>No encontrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dirección del puesto:</strong></td>
+                            <td>No encontrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mesa:</strong></td>
+                            <td>No encontrado</td>
+                        </tr>
+                    </table>';
+    } else {
+        echo '
                     <table class="table table-condensed table-hover ">
                         <tr>
                             <td><strong>Cédula de ciudadanía:</strong></td>
@@ -45,9 +81,7 @@ function load_result_serv($documento) {
                             <td>' . $result['mesa'] . '</td>
                         </tr>
                     </table>';
-    
-    
-       
+    }
 }
 
 ?>

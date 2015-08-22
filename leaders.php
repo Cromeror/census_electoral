@@ -19,6 +19,7 @@ $elements = new ElementHTML();
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/census-voter.js"></script>
         <div class="navbar navbar-default navbar-fixed-top" style="padding-left: 20px; padding-right: 20px; margin-bottom: 10px">
             <?php $elements->load_navbar(); ?>
             <div class="navbar navbar-default border-none">
