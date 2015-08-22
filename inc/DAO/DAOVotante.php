@@ -68,6 +68,7 @@ class DAOVotante
         
 	function mostrarVotante($cc_votante)
 	{
+            $aux=0;
             $conexion = new Conexion();
             $consulta = "SELECT * FROM `votante` WHERE `cc_votante` = ".$cc_votante;
             $resultado=$conexion->consultar_servidor($consulta);
@@ -81,7 +82,12 @@ class DAOVotante
                     $lista2[$x][4] = $lista[4];
                     $lista2[$x][5] = $lista[5];
                     $lista2[0][6] = $lista[6];
+                    $aux=1;
                 }
+            }
+            if($aux==0){
+                
+                return NULL; 
             }
             $conexion->cerrar_conexion();
             return $lista2;
@@ -90,11 +96,15 @@ class DAOVotante
         function mostrarListaVotantes_Lider($cc_candidato, $cc_lider)
 	{
             $conexion = new Conexion();
+            $aux=0;
             $consulta = "SELECT votante.cc_votante, votante.nombre_votante, votante.apellido_votante, puesto_votacion.departamento, puesto_votacion.municipio, puesto_votacion.puesto, puesto_votacion.mesa FROM `puesto_votacion`, `zonificacion`, `votante`, `lista_votante_lider`,`lista_candidato_lider` WHERE zonificacion.cc_votante = votante.cc_votante AND zonificacion.id_puesto = puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_votante = votante.cc_votante AND lista_votante_lider.cc_lider = '".$cc_lider."' AND lista_candidato_lider.cc_lider = lista_votante_lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
             $resultado=$conexion->consultar_servidor($consulta);
             $consulta="SELECT COUNT(*) FROM `puesto_votacion`, `zonificacion`, `votante`, `lista_votante_lider`,`lista_candidato_lider` WHERE zonificacion.cc_votante = votante.cc_votante AND zonificacion.id_puesto = puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_votante = votante.cc_votante AND lista_votante_lider.cc_lider = '".$cc_lider."' AND lista_candidato_lider.cc_lider = lista_votante_lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
             $count=$conexion->consultar_servidor($consulta);
-            
+            if($count==0){
+                
+                return NULL; 
+            }
             for($x=0;$x<count($count);$x++){
                 $lista = mysql_fetch_array($resultado);
                 if($lista==TRUE){
@@ -105,7 +115,12 @@ class DAOVotante
                     $lista2[$x][4] = $lista[4];
                     $lista2[$x][5] = $lista[5];
                     $lista2[$x][6] = $lista[6];
+                    $aux=1;
                 }
+            }
+             if($aux==0){
+                
+                return NULL; 
             }
             $conexion->cerrar_conexion();
             return $lista2;
@@ -115,6 +130,7 @@ class DAOVotante
 	{
             $conexion = new Conexion();
             $cc_votante=0;
+            
             $nombre_votante="0";
             $apellido_votante="0";
             $tel_votante=0;
@@ -122,10 +138,15 @@ class DAOVotante
             $dir_votante="0";
             $consulta = "SELECT `cc_votante` FROM `lista_votante_partido` WHERE `id_partido` = ".$id_partido;
             $resultado =$conexion->consultar_servidor($consulta);
+            $consulta = "SELECT `cc_votante` FROM `lista_votante_partido` WHERE `id_partido` = ".$id_partido;
+            $count =$conexion->consultar_servidor($consulta);
             $j=0;
             $lista="";
             $x=0;
-            for($x=0;$x<300;$x++){
+            if($count==0){
+                return NULL;
+            }
+            for($x=0;$x<  count($count);$x++){
                 $lista  = mysql_fetch_array($resultado);
                 if($lista==TRUE){
                    $cedulas[$j] = $lista[0];
@@ -148,12 +169,6 @@ class DAOVotante
                 $listavotantes[$x][4]=$votante->getCel_votante();
                 $listavotantes[$x][5]=$votante->getDir_votante();
                 
-                echo $listavotantes[$x][0];
-                echo $listavotantes[$x][1];
-                echo $listavotantes[$x][2];
-                echo $listavotantes[$x][3];
-                echo $listavotantes[$x][4];
-                echo $listavotantes[$x][5];
                 }
                 return $listavotantes;
            
