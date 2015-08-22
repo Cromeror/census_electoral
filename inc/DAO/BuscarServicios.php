@@ -6,6 +6,9 @@ class BuscarServicios {
     public function muestraVotante($cc_votante) {
         $list1 = $this->muestraNombre($cc_votante);
         $list2 = $this->buscarPuestoVotacion($cc_votante);
+        if($list2==NULL){
+            return NULL;
+        }
         $result = $array = array(
             "nombre" => $list1[0],
             "apellido" => $list1[1],
