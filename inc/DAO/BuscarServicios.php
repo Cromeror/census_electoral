@@ -33,7 +33,7 @@ private function muestraNombre($cc_votante) {
         $es = strip_tags($es);
         $es = $this->LimpiaTexto_mejorado($es);
         $es = $this->Depurador_mejorado($es);
-        if($es=="#"){
+        if($es=="@"){
             $listanew[0]="NOMBRE NO SE ENCUENTRA EN LA BASE DE DATOS";
             $listanew[1]="APELLIDOS NO SE ENCUENTRA EN LA BASE DE DATOS";
             return $listanew;
@@ -55,8 +55,8 @@ private  function buscarPuestoVotacion($cc_votante) {
         $es = strip_tags($es);
         $es = $this->LimpiaTexto($es);
         $es = $this->Depurador($es);
-        if($es=="#"){
-            
+        if($es=="@"){
+           
             return NULL;
         }
         $lista = $this->Pasarvariables($es);
@@ -174,9 +174,7 @@ private  function buscarPuestoVotacion($cc_votante) {
         $es = str_replace("Dirección", "*", $es);
         $es = str_replace("Fecha de inscripciÃ³n:", "*", $es);
         $es = str_replace("Mesa", "*", $es);
-        $es = str_replace("Debe inscribirse en los pe", "#", $es);
-        
-        
+        $es = str_replace("Debe inscribirse en los pe", "@", $es);
         
         
         return $es;
@@ -186,10 +184,10 @@ private  function buscarPuestoVotacion($cc_votante) {
         $lista = str_split($es);
         $j = count($lista);
         for ($x = 0; $x < count($lista); $x++) {
-            if($lista[$x]=="#"){
+            if($lista[$x]=="@"){
                 
                 
-                return "#";
+                return "@";
             }
             
         }
@@ -222,20 +220,13 @@ private  function buscarPuestoVotacion($cc_votante) {
         }
         return $resultado;
     }
-////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-  private   function ImprimirLista($lista) {
-        for ($x = 0; $x < count($lista); $x++) {
-            if ($x != 4) {
-                ?><br><?php echo $lista[$x]; ?></br><?php
-            }
-        }
-    }
+
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
  private    function LimpiaTexto_mejorado($es) {
         $es = str_replace("Nombre:", "*", $es);
         $es = str_replace("Apellidos", "*", $es);
         $es = str_replace("Tipo", "*", $es);
-        $es= str_replace("no se encuentra registrada","#", $es);
+        $es= str_replace("no se encuentra registrada","@", $es);
 
         return $es;
     }
@@ -291,10 +282,10 @@ private     function Pasarvariables_mejorado($string) {
         $j = count($lista);
         
         for ($x = 0; $x < count($lista); $x++) {
-            if($lista[$x]=="#"){
+            if($lista[$x]=="@"){
                 
                 
-                return "#";
+                return "@";
             }
             
         }
