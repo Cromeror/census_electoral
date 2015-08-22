@@ -99,15 +99,11 @@ class DAOVotante
             $aux=0;
             $consulta = "SELECT votante.cc_votante, votante.nombre_votante, votante.apellido_votante, puesto_votacion.departamento, puesto_votacion.municipio, puesto_votacion.puesto, puesto_votacion.mesa FROM `puesto_votacion`, `zonificacion`, `votante`, `lista_votante_lider`,`lista_candidato_lider` WHERE zonificacion.cc_votante = votante.cc_votante AND zonificacion.id_puesto = puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_votante = votante.cc_votante AND lista_votante_lider.cc_lider = '".$cc_lider."' AND lista_candidato_lider.cc_lider = lista_votante_lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
             $resultado=$conexion->consultar_servidor($consulta);
-            $consulta="SELECT COUNT(*) FROM `puesto_votacion`, `zonificacion`, `votante`, `lista_votante_lider`,`lista_candidato_lider` WHERE zonificacion.cc_votante = votante.cc_votante AND zonificacion.id_puesto = puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_votante = votante.cc_votante AND lista_votante_lider.cc_lider = '".$cc_lider."' AND lista_candidato_lider.cc_lider = lista_votante_lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
-            $count=$conexion->consultar_servidor($consulta);
-            if($count==0){
+            $x=0;
+            $lista2 = array();
+            
+            while ($lista = mysql_fetch_array($resultado)) {
                 
-                return NULL; 
-            }
-            for($x=0;$x<count($count);$x++){
-                $lista = mysql_fetch_array($resultado);
-                if($lista==TRUE){
                     $lista2[$x][0] = $lista[0];
                     $lista2[$x][1] = $lista[1];
                     $lista2[$x][2] = $lista[2];
@@ -115,13 +111,13 @@ class DAOVotante
                     $lista2[$x][4] = $lista[4];
                     $lista2[$x][5] = $lista[5];
                     $lista2[$x][6] = $lista[6];
-                    $aux=1;
-                }
-            }
-             if($aux==0){
+                    $x++;
                 
-                return NULL; 
             }
+             if (empty($lista2)) {
+                 return NULL;
+        }
+
             $conexion->cerrar_conexion();
             return $lista2;
         }
@@ -220,5 +216,33 @@ class DAOVotante
             $conexion->cerrar_conexion();
             
 	}
+                function mostrarListaVotantes_Candidato($cc_candidato)
+	{
+            $conexion = new Conexion();
+            $aux=0;
+            $consulta = "SELECT votante.cc_votante, votante.nombre_votante, votante.apellido_votante, puesto_votacion.departamento, puesto_votacion.municipio, puesto_votacion.puesto, puesto_votacion.mesa FROM `lista_votante_lider`, `puesto_votacion`, `zonificacion`, `votante`, `lider`,`lista_candidato_lider` WHERE lista_votante_lider.cc_votante=votante.cc_votante AND zonificacion.cc_votante=votante.cc_votante AND zonificacion.id_puesto=puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_lider=lider.cc_lider AND lista_candidato_lider.cc_lider=lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
+            $resultado=$conexion->consultar_servidor($consulta);
+            $x=0;
+            $lista2 = array();
+            
+            while ($lista = mysql_fetch_array($resultado)) {
+                
+                    $lista2[$x][0] = $lista[0];
+                    $lista2[$x][1] = $lista[1];
+                    $lista2[$x][2] = $lista[2];
+                    $lista2[$x][3] = $lista[3];
+                    $lista2[$x][4] = $lista[4];
+                    $lista2[$x][5] = $lista[5];
+                    $lista2[$x][6] = $lista[6];
+                    $x++;
+                
+            }
+             if (empty($lista2)) {
+                 return NULL;
+        }
+
+            $conexion->cerrar_conexion();
+            return $lista2;
+        }
 }
 ?>
