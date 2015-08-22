@@ -30,6 +30,11 @@ private function muestraNombre($cc_votante) {
         $es = strip_tags($es);
         $es = $this->LimpiaTexto_mejorado($es);
         $es = $this->Depurador_mejorado($es);
+        if($es=="#"){
+            $listanew[0]="NOMBRE NO SE ENCUENTRA EN LA BASE DE DATOS";
+            $listanew[1]="APELLIDOS NO SE ENCUENTRA EN LA BASE DE DATOS";
+            return $listanew;
+        }
         $lista = $this->Pasarvariables_mejorado($es);
         $lista = $this->espacioscoienzoyfinal_mejorado($lista);
         if (empty($lista)) {
@@ -47,6 +52,10 @@ private  function buscarPuestoVotacion($cc_votante) {
         $es = strip_tags($es);
         $es = $this->LimpiaTexto($es);
         $es = $this->Depurador($es);
+        if($es=="#"){
+            
+            return NULL;
+        }
         $lista = $this->Pasarvariables($es);
         $lista = $this->espacioscoienzoyfinal($lista);
         $lista = $this->Eliminarbasura($lista);
@@ -153,25 +162,6 @@ private  function buscarPuestoVotacion($cc_votante) {
     }
 
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
- private    function extractTable($codeHTML) {
-        $codeHTML = cutString($codeHTML, '<table>');
-        //$codeHTML = substr($codeHTML, $posicion_coincidencia);
-        $positionFinal = strpos($codeHTML, '</html>');
-        $positionTableFinal = strpos($codeHTML, '</table>');
-        $aux = $positionFinal - $positionTableFinal;
-        $delString = substr($codeHTML, -$aux);
-        $result = str_replace($delString, "/table>", $codeHTML);
-        return $result;
-    }
-////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
-private     function cutString($string, $searchString) {
-        $position = strpos($string, $searchString);
-        if ($position === false) {
-            return null;
-        } else {
-            return substr($string, $position);
-        }
-    }
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
    private  function LimpiaTexto($es) {
         $es = str_replace("Departamento:", "*", $es);
@@ -181,12 +171,25 @@ private     function cutString($string, $searchString) {
         $es = str_replace("Dirección", "*", $es);
         $es = str_replace("Fecha de inscripciÃ³n:", "*", $es);
         $es = str_replace("Mesa", "*", $es);
+        $es = str_replace("Debe inscribirse en los pe", "#", $es);
+        
+        
+        
+        
         return $es;
     }
 ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
   private   function Depurador($es) {
         $lista = str_split($es);
         $j = count($lista);
+        for ($x = 0; $x < count($lista); $x++) {
+            if($lista[$x]=="#"){
+                
+                
+                return "#";
+            }
+            
+        }
         for ($x = 0; $x < 1326; $x++) {
             $lista[$x] = '+';
         }
@@ -229,12 +232,14 @@ private     function cutString($string, $searchString) {
         $es = str_replace("Nombre:", "*", $es);
         $es = str_replace("Apellidos", "*", $es);
         $es = str_replace("Tipo", "*", $es);
+        $es= str_replace("no se encuentra registrada","#", $es);
 
         return $es;
     }
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
 private     function Pasarvariables_mejorado($string) {
         $j = 0;
+        $ojo=0;
         $aux;
         $listaux;
         $listanew;
@@ -244,9 +249,11 @@ private     function Pasarvariables_mejorado($string) {
         for ($x = 0; $x < count($lista); $x++) {
             if ($lista[$x] == '*') {
                 $listaux[$j] = $x;
+                $ojo++;
                 $j = $j + 1;
             }
         }
+        if($ojo==3){
         $x = $listaux[0] + 1;
         $j = $listaux[1];
         for ($x; $x < $j; $x++) {
@@ -260,6 +267,10 @@ private     function Pasarvariables_mejorado($string) {
             $aux = $aux . $lista[$x];
         }
         $listanew[1] = $aux;
+        }else{
+            $listanew[0]="NOMBRE NO SE ENCUENTRA EN LA BASE DE DATOS";
+            $listanew[1]="APELLIDOS NO SE ENCUENTRA EN LA BASE DE DATOS";
+        }
         return $listanew;
     }
 ////////////////////////////////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES ////////////////////////////////////// FUNCIONES
@@ -275,6 +286,15 @@ private     function Pasarvariables_mejorado($string) {
  private function Depurador_mejorado($es) {
         $lista = str_split($es);
         $j = count($lista);
+        
+        for ($x = 0; $x < count($lista); $x++) {
+            if($lista[$x]=="#"){
+                
+                
+                return "#";
+            }
+            
+        }
         for ($x = 0; $x < 2500; $x++) {
             $lista[$x] = '+';
         }
