@@ -91,7 +91,7 @@ function eliminarLider($cc_lider)
         function mostrarLider_Candidato($cc_candidato){
            
             $conexion = new Conexion();
-            $consulta = "SELECT lider.cc_lider, lider.nombre_lider, lider.apellido_lider, lider.tel_lider, lider.cel_lider, lider.dir_lider FROM `lista_candidato_lider`, `lider` WHERE lista_candidato_lider.cc_lider=lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
+            $consulta = "SELECT lider.cc_lider, lider.nombre_lider, lider.apellido_lider, puesto_votacion.departamento, puesto_votacion.municipio, puesto_votacion.puesto FROM `lista_candidato_lider`, `lider`, `zonificacion`,`puesto_votacion` WHERE zonificacion.cc_votante=lider.cc_lider AND zonificacion.id_puesto=puesto_votacion.id_puesto_votacion AND lista_candidato_lider.cc_lider=lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
             $resultado=$conexion->consultar_servidor($consulta);
 //            $lista = mysql_fetch_array($resultado);
             for($x=0;$x<1000;$x++){

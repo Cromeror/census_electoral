@@ -18,9 +18,9 @@ class DAOVotante
                 $consulta = "INSERT INTO `censo_votacion`.`votante` (`cc_votante`, `nombre_votante`, `apellido_votante`, `tel_votante`, `cel_votante`, `dir_votante`) VALUES ('".$cc_votante."', '".$nombre_votante."', '".$apellido_votante."', '".$tel_votante."', '".$cel_votante."', '".$dir_votante."');";
                 $conexion->consultar_servidor($consulta);
                 $conexion->cerrar_conexion();
-                $dao = new DAOVotante();
-                $dao->agregarVotante_Candidato($cc_candidato, $cc_votante);
-                $dao->agregarListaVotante_Lider($cc_votante, $cc_lider);
+                
+                $this->agregarVotante_Candidato($cc_candidato, $cc_votante);
+                $this->agregarListaVotante_Lider($cc_votante, $cc_lider);
                 if ($resultado==TRUE){
                     //El votante se agrego a la Base de Datos
                    return 2;
@@ -48,11 +48,12 @@ class DAOVotante
 	}
 
         
-        private function eliminarVotante($cc_votante)
+        private function eliminarVotante($cc_lider, $cc_votante)
 	{
             $conexion = new Conexion();
             $consulta = "DELETE FROM `votante` WHERE `cc_votante` = ".$cc_votante;
             $resultado = $conexion->consultar_servidor($consulta);
+            $this->eliminarListaVotante_Lider($cc_lider, $cc_votante);
             if($resultado==TRUE){
                 //echo 'Candidato eliminado';
                 return TRUE; //TRUE, El candidato se elimino Exitosamente
@@ -86,15 +87,15 @@ class DAOVotante
             return $lista2;
         }
         
-        function mostrarListaVotantes_Lider($cc_lider)
+        function mostrarListaVotantes_Lider($cc_candidato, $cc_lider)
 	{
             $conexion = new Conexion();
-            $consulta = "SELECT votante.cc_votante, votante.nombre_votante, votante.apellido_votante, puesto_votacion.departamento, puesto_votacion.municipio, puesto_votacion.puesto, puesto_votacion.mesa FROM `lista_votante_lider`, `puesto_votacion`, `zonificacion`, `votante` WHERE lista_votante_lider.cc_votante=votante.cc_votante AND zonificacion.cc_votante=votante.cc_votante AND zonificacion.id_puesto=puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_lider='".$cc_lider."' ORDER BY `votante`.`cc_votante` ASC";
+            $consulta = "SELECT votante.cc_votante, votante.nombre_votante, votante.apellido_votante, puesto_votacion.departamento, puesto_votacion.municipio, puesto_votacion.puesto, puesto_votacion.mesa FROM `puesto_votacion`, `zonificacion`, `votante`, `lista_votante_lider`,`lista_candidato_lider` WHERE zonificacion.cc_votante = votante.cc_votante AND zonificacion.id_puesto = puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_votante = votante.cc_votante AND lista_votante_lider.cc_lider = '".$cc_lider."' AND lista_candidato_lider.cc_lider = lista_votante_lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
             $resultado=$conexion->consultar_servidor($consulta);
-//            $lista = mysql_fetch_array($resultado);
+            $consulta="SELECT COUNT(*) FROM `puesto_votacion`, `zonificacion`, `votante`, `lista_votante_lider`,`lista_candidato_lider` WHERE zonificacion.cc_votante = votante.cc_votante AND zonificacion.id_puesto = puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_votante = votante.cc_votante AND lista_votante_lider.cc_lider = '".$cc_lider."' AND lista_candidato_lider.cc_lider = lista_votante_lider.cc_lider AND lista_candidato_lider.cc_candidato=".$cc_candidato;
+            $count=$conexion->consultar_servidor($consulta);
             
-           //SELECT COUNT(*) FROM `lista_votante_lider`, `puesto_votacion`, `zonificacion`, `votante` WHERE lista_votante_lider.cc_votante=votante.cc_votante AND zonificacion.cc_votante=votante.cc_votante AND zonificacion.id_puesto=puesto_votacion.id_puesto_votacion AND lista_votante_lider.cc_lider=80 
-            for($x=0;$x5000;$x++){
+            for($x=0;$x<count($count);$x++){
                 $lista = mysql_fetch_array($resultado);
                 if($lista==TRUE){
                     $lista2[$x][0] = $lista[0];
@@ -177,7 +178,7 @@ class DAOVotante
             return $resultado;
 	}
         
-        function eliminarListaVotante_Lider($cc_lider, $cc_votante)
+        private function eliminarListaVotante_Lider($cc_lider, $cc_votante)
 	{
             $conexion = new Conexion();
             $consulta = "DELETE FROM `lista_votante_lider` WHERE `cc_lider`='".$cc_lider."' AND `cc_votante`=".$cc_votante;
@@ -185,7 +186,14 @@ class DAOVotante
             $conexion->cerrar_conexion();
 	}
         
-        function modificarListaVotante_Lider($cc_lider_antes,$cc_lider_actual, $cc_votante)
+         private function eliminarListaVotante_Candidato($cc_lider, $cc_candidato)
+	{
+            $conexion = new Conexion();
+            $consulta = "DELETE FROM `lista_votante_lider` WHERE `cc_lider`='".$cc_lider."' AND `cc_votante`=".$cc_votante;
+            $conexion->consultar_servidor($consulta);
+            $conexion->cerrar_conexion();
+	}
+        private function modificarListaVotante_Lider($cc_lider_antes,$cc_lider_actual, $cc_votante)
 	{
             $conexion = new Conexion();
             $consulta = "SELECT `id_lista` FROM `lista_votante_lider` WHERE `cc_lider`='".$cc_lider_antes."' AND `cc_votante`=".$cc_votante;
